@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    color: #fff;
+    background-color: #5995DA;
+    border: 2px solid black;
+    padding: 100px 0;
+}
+
+.row {
+    background-color: green;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.newDiv{
+    background-color: white;
+    border: 1px solid black;
+    margin-bottom: 5px; 
+    padding: 20px;    
+}
+
