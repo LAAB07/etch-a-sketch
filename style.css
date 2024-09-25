@@ -2,28 +2,36 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgb(155, 11, 11);
   }
+
+.title {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 72px;
+    color: rgb(250, 202, 112);
+    -webkit-text-stroke: 2px black; /* width and color */
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
 #container {
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
-    color: #fff;
-    background-color: #5995DA;
-    border: 2px solid black;
-    padding: 100px 0;
+    color: black;
+    padding: 50px 10px;
 }
 
-.row {
-    background-color: green;
+.newDiv {
+    background-color: rgb(250, 202, 112);
     border: 1px solid black;
-    margin: 2px;
+    padding: 10px;   
 }
 
-.newDiv{
-    background-color: white;
-    border: 1px solid black;
-    margin-bottom: 5px; 
-    padding: 20px;    
+.permahover {
+    background-color: black;
 }
 
