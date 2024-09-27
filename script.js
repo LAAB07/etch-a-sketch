@@ -1,24 +1,16 @@
-const btn = document.getElementById("btn");
-const cont = document.getElementById("container");
 let val = 0;
 let idName = 1;
 
-function getNumberDivs(){
+//CREATING HTML ELEMENTS
 
-    let userChoice;
+const button = document.createElement("button");
+button.setAttribute("id","btn");
+button.textContent="CHANGE SIZE OF GRID";
+const cont = document.getElementById("container");
+const option = document.getElementById("option");
+option.appendChild(button);
 
-    userChoice = prompt("Enter the number of divs that you want to draw");
-    
-    if (userChoice === null || userChoice === "" || userChoice === undefined){
-            alert("You must enter a valid option into the prompt box!\nCannot be empty");
-            return getNumberDivs();
-    } else {
-            return userChoice;    
-    }
-
-}
-
-let userSelection = getNumberDivs();
+//FUNCTION THAT CREATES THE GRID
 
 function addDiv(numDivs){
 
@@ -37,7 +29,7 @@ function addDiv(numDivs){
     }
 }
 
-addDiv(userSelection);
+addDiv(16);
 
 const newDivs = document.querySelectorAll('.newDiv');
 
@@ -46,3 +38,42 @@ const newDivs = document.querySelectorAll('.newDiv');
         newDiv.classList.add('permahover');
   });
 })
+
+button.addEventListener("click", getNumberDivs);
+
+function getNumberDivs(){
+
+    let userChoice;
+
+    userChoice = prompt("Enter the number of divs that you want to draw");
+    
+    if (userChoice === null || userChoice === "" || userChoice === undefined){
+            alert("You must enter a valid option into the prompt box!\nCannot be empty");
+            return getNumberDivs();
+    } else {
+            cont.replaceChildren();
+            idName = 1;
+            addDiv(userChoice);
+            const newDivs = document.querySelectorAll('.newDiv');
+
+            [...newDivs].forEach(newDiv => {
+            newDiv.addEventListener('mouseover', () => {
+                    newDiv.classList.add('permahover');
+            });
+            })
+            // addDiv(userChoice);    
+    }
+
+}
+
+
+
+
+
+// newDivs.forEach(newDiv => {
+//     newDiv.addEventListener("mouseover", usePermahover);
+// });
+
+// function usePermahover(){
+//     newDiv.classList.add('permahover');
+// }
