@@ -5,7 +5,7 @@ let idName = 1;
 
 const button = document.createElement("button");
 button.setAttribute("id","btn");
-button.textContent="CHANGE SIZE OF GRID";
+button.textContent="CHANGE SIZE OF GRID (MAX 100)";
 const cont = document.getElementById("container");
 const option = document.getElementById("option");
 option.appendChild(button);
@@ -34,8 +34,10 @@ addDiv(16);
 const newDivs = document.querySelectorAll('.newDiv');
 
 [...newDivs].forEach(newDiv => {
-  newDiv.addEventListener('mouseover', () => {
+  newDiv.addEventListener('mouseover', (e) => {
         newDiv.classList.add('permahover');
+        let color = '#'+Math.floor(Math.random()*16777215).toString(16);
+        newDiv.style['background-color'] = color;
   });
 })
 
@@ -47,8 +49,8 @@ function getNumberDivs(){
 
     userChoice = prompt("Enter the number of divs that you want to draw");
     
-    if (userChoice === null || userChoice === "" || userChoice === undefined){
-            alert("You must enter a valid option into the prompt box!\nCannot be empty");
+    if (userChoice === null || userChoice === "" || userChoice === undefined || userChoice > 100){
+            alert("You must enter a valid option into the prompt box!\nCannot be empty and must be less than 100");
             return getNumberDivs();
     } else {
             cont.replaceChildren();
@@ -59,6 +61,8 @@ function getNumberDivs(){
             [...newDivs].forEach(newDiv => {
             newDiv.addEventListener('mouseover', () => {
                     newDiv.classList.add('permahover');
+                    let color = '#'+Math.floor(Math.random()*16777215).toString(16);
+                    newDiv.style['background-color'] = color;
             });
             })
             // addDiv(userChoice);    

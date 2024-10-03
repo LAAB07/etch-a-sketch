@@ -6,6 +6,12 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+/* body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
 #title {
     margin-top: 20px;
     display: flex;
@@ -25,7 +31,7 @@
 
 #container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content:center;
     color: black;
     padding: 50px 10px;
@@ -34,12 +40,12 @@
 .newDiv {
     background-color: rgb(250, 202, 112);
     border: 1px solid black;
-    padding: 10px;   
+    padding: 8px;   
 }
 
-.permahover {
+/* .permahover {
     background-color: black;
-}
+} */
 
 button {
     color: rgb(250, 202, 112);
