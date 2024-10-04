@@ -5,12 +5,16 @@ let darken = true;
 
 //CREATING HTML ELEMENTS
 
-const button = document.createElement("button");
-button.setAttribute("id","btn");
-button.textContent="CHANGE SIZE OF GRID (MAX 100)";
+const btnCreate = document.createElement("button");
+btnCreate.setAttribute("id","btnCreate");
+btnCreate.textContent="CHANGE SIZE OF GRID (MAX 100)";
+const btnErase = document.createElement("button");
+btnErase.setAttribute("id","btnErase");
+btnErase.textContent="ERASE GRID";
 const cont = document.getElementById("container");
 const option = document.getElementById("option");
-option.appendChild(button);
+option.appendChild(btnCreate);
+option.appendChild(btnErase);
 
 //FUNCTION THAT CREATES THE GRID
 
@@ -55,7 +59,7 @@ const newDivs = document.querySelectorAll('.newDiv');
   });
 })
 
-button.addEventListener("click", getNumberDivs);
+btnCreate.addEventListener("click", getNumberDivs);
 
 function getNumberDivs(){
 
@@ -95,6 +99,19 @@ function getNumberDivs(){
     }
 
 }
+
+btnErase.addEventListener("click", eraseGrid);
+
+function eraseGrid(){
+
+    const newDivs = document.querySelectorAll('.newDiv');
+
+    [...newDivs].forEach(newDiv => {
+        newDiv.style['background-color'] = '#faca70';
+        newDiv.style['opacity'] = 1;
+    });
+}
+
 
 
 
