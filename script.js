@@ -1,5 +1,7 @@
 let val = 0;
 let idName = 1;
+let opacity = 1;
+let darken = true;
 
 //CREATING HTML ELEMENTS
 
@@ -34,10 +36,22 @@ addDiv(16);
 const newDivs = document.querySelectorAll('.newDiv');
 
 [...newDivs].forEach(newDiv => {
-  newDiv.addEventListener('mouseover', (e) => {
+  newDiv.addEventListener('mouseover', () => {
         newDiv.classList.add('permahover');
         let color = '#'+Math.floor(Math.random()*16777215).toString(16);
         newDiv.style['background-color'] = color;
+        newDiv.style['opacity'] = opacity;
+        if(darken){
+            opacity = opacity - .1;
+            if(opacity<=0){
+                darken = false;
+            }
+        } else {
+            opacity = opacity + .1;
+            if(opacity>=1){
+                darken = true;
+            }
+        }
   });
 })
 
@@ -63,6 +77,18 @@ function getNumberDivs(){
                     newDiv.classList.add('permahover');
                     let color = '#'+Math.floor(Math.random()*16777215).toString(16);
                     newDiv.style['background-color'] = color;
+                    newDiv.style['opacity'] = opacity;
+                    if(darken){
+                        opacity = opacity - .1;
+                        if(opacity<=0){
+                            darken = false;
+                        }
+                    } else {
+                        opacity = opacity + .1;
+                        if(opacity>=1){
+                            darken = true;
+                        }
+                    }
             });
             })
             // addDiv(userChoice);    
