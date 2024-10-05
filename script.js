@@ -7,19 +7,33 @@ let darken = true;
 
 const btnCreate = document.createElement("button");
 btnCreate.setAttribute("id","btnCreate");
-btnCreate.textContent="CHANGE SIZE OF GRID (MAX 100)";
+btnCreate.textContent="CHANGE SIZE OF GRID";
+
 const btnErase = document.createElement("button");
 btnErase.setAttribute("id","btnErase");
 btnErase.textContent="ERASE GRID";
+
+const blackColor = document.createElement("button");
+blackColor.setAttribute("id","btnBlackColor");
+blackColor.textContent ="BLACK COLOR";
+
+const randomColor = document.createElement("button");
+randomColor.setAttribute("id","btnRandomColor");
+randomColor.textContent ="RANDOM COLOR";
+
 const cont = document.getElementById("container");
 const option = document.getElementById("option");
 option.appendChild(btnCreate);
 option.appendChild(btnErase);
+option.appendChild(blackColor);
+option.appendChild(randomColor);
 
 //FUNCTION THAT CREATES THE GRID
 
 function addDiv(numDivs){
 
+    let divSize = `${720/ numDivs}px`;
+    console.log(divSize);
     for(let i=0; i<numDivs; i++){
         const row = document.createElement("div");
         row.setAttribute("class", "row");
@@ -28,6 +42,8 @@ function addDiv(numDivs){
             const appendDiv = document.createElement("div");
             appendDiv.setAttribute("class", "newDiv");
             appendDiv.setAttribute("id", "div" + idName);
+            appendDiv.style.width = divSize;
+            appendDiv.style.height = divSize;
             row.appendChild(appendDiv);
             idName++;
         }
@@ -42,8 +58,8 @@ const newDivs = document.querySelectorAll('.newDiv');
 [...newDivs].forEach(newDiv => {
   newDiv.addEventListener('mouseover', () => {
         newDiv.classList.add('permahover');
-        let color = '#'+Math.floor(Math.random()*16777215).toString(16);
-        newDiv.style['background-color'] = color;
+        // let color = '#'+Math.floor(Math.random()*16777215).toString(16);
+        // newDiv.style['background-color'] = color;
         newDiv.style['opacity'] = opacity;
         if(darken){
             opacity = opacity - .1;
@@ -65,10 +81,10 @@ function getNumberDivs(){
 
     let userChoice;
 
-    userChoice = prompt("Enter the number of divs that you want to draw");
+    userChoice = prompt("Enter the number of cells per side, maximum is 100.");
     
     if (userChoice === null || userChoice === "" || userChoice === undefined || userChoice > 100){
-            alert("You must enter a valid option into the prompt box!\nCannot be empty and must be less than 100");
+            alert("You must enter a valid option into the prompt box!\nCannot be empty and must be maximum 100");
             return getNumberDivs();
     } else {
             cont.replaceChildren();
@@ -112,15 +128,32 @@ function eraseGrid(){
     });
 }
 
+blackColor.addEventListener("click", getBlackColor);
 
+function getBlackColor(){
 
+    const newDivs = document.querySelectorAll('.newDiv');
 
+    [...newDivs].forEach(newDiv => {
+        newDiv.addEventListener('mouseover', () => {
+        newDiv.style['background-color'] = '#000000';
+    });
+    })
 
+}
 
-// newDivs.forEach(newDiv => {
-//     newDiv.addEventListener("mouseover", usePermahover);
-// });
+randomColor.addEventListener("click", getRandomColor);
 
-// function usePermahover(){
-//     newDiv.classList.add('permahover');
-// }
+function getRandomColor(){
+
+    const newDivs = document.querySelectorAll('.newDiv');
+
+    [...newDivs].forEach(newDiv => {
+        newDiv.addEventListener('mouseover', () => {
+        newDiv.classList.remove('permahover');
+        let color = '#'+Math.floor(Math.random()*16777215).toString(16);
+        newDiv.style['background-color'] = color;
+    });
+    })
+
+}
