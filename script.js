@@ -95,8 +95,7 @@ function getNumberDivs(){
             [...newDivs].forEach(newDiv => {
             newDiv.addEventListener('mouseover', () => {
                     newDiv.classList.add('permahover');
-                    let color = '#'+Math.floor(Math.random()*16777215).toString(16);
-                    newDiv.style['background-color'] = color;
+                    newDiv.style['background-color'] = '#000000';
                     newDiv.style['opacity'] = opacity;
                     if(darken){
                         opacity = opacity - .1;
